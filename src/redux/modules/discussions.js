@@ -1,7 +1,8 @@
 import { Record, List, Map } from 'immutable';
 import moment from 'moment';
 import { namespace, noPayload, withPayload } from '../../utils';
-import { types as layoutTypes } from 'react-kinops-common/layout';
+import { LayoutModule } from 'react-kinops-common';
+const { types: layoutTypes } = LayoutModule;
 
 export const types = {
   // API-based actions.

@@ -2,7 +2,8 @@ import { delay } from 'redux-saga';
 import { select, put, call, all, race, take } from 'redux-saga/effects';
 import { List } from 'immutable';
 import { actions, types } from '../modules/discussions';
-import { types as errorTypes } from '../modules/errors';
+import { ToastsModule } from 'react-kinops-common';
+const { types: errorTypes } = ToastsModule;
 
 global.bundle = {
   apiLocation: () => '/acme/app/api/v1',

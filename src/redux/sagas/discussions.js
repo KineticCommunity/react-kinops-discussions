@@ -13,7 +13,7 @@ import {
 } from 'redux-saga/effects';
 import { CoreAPI } from 'react-kinetic-core';
 
-import { actions as toastActions } from 'react-kinops-common';
+import { ToastsModule } from 'react-kinops-common';
 import { types, actions } from '../modules/discussions';
 
 import {
@@ -31,6 +31,8 @@ import {
   fetchResponseProfile,
   getResponseAuthentication,
 } from '../../utils/discussion_api';
+
+const { actions: toastActions } = ToastsModule;
 
 export const SUBMISSION_INCLUDES =
   'details,values,attributes,form,form.attributes';

@@ -9,9 +9,11 @@ import {
 import { List } from 'immutable';
 
 import { actions, formatMessages } from '../redux/modules/discussions';
-import { actions as notificationActions } from 'react-kinops-common/toasts';
+import { ToastsModule } from 'react-kinops-common';
 
 import { Discussion } from './Discussion';
+
+const { actions: notificationActions } = ToastsModule;
 
 const mapStateToProps = (state, props) => {
   const discussion =
