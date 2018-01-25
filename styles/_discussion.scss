@@ -44,6 +44,9 @@
           padding: 0.75rem;
           position: relative;
           white-space: pre-wrap;
+          // IE11 requires max-width due to flexbox bug which results
+          // in the message never wrapping and scrolling horizontally
+          max-width: 100%;
           // line-height: 0.75rem;
           &:after {
             content: ' ';

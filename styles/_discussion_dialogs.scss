@@ -1,4 +1,5 @@
 .discussion-dialog {
+  flex-grow: 1;
   &.participants-dialog {
     background-color: $blue4;
     padding: 1.5rem;
