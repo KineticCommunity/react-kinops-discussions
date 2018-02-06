@@ -15,6 +15,7 @@ import { CoreAPI } from 'react-kinetic-core';
 
 import { ToastsModule } from 'react-kinops-common';
 import { types, actions } from '../modules/discussions';
+import { selectServerUrl } from '../selectors';
 
 import {
   MESSAGE_LIMIT,
@@ -36,8 +37,6 @@ const { actions: toastActions } = ToastsModule;
 
 export const SUBMISSION_INCLUDES =
   'details,values,attributes,form,form.attributes';
-
-export const selectServerUrl = state => state.app.discussionServerUrl;
 
 // Supporting documentation:
 // * https://medium.com/@ebakhtarov/bidirectional-websockets-with-redux-saga-bfd5b677c7e7
@@ -279,12 +278,13 @@ export const selectFetchMessageSettings = guid => state => {
     guid,
     offset: state.discussions.discussions.get(guid).messages.size,
     lastReceived: state.discussions.discussions.get(guid).lastReceived,
-    responseUrl: state.app.discussionServerUrl,
+    responseUrl: selectServerUrl(state),
   };
 };
 
 export function* fetchMoreMessagesTask({ payload }) {
   const params = yield select(selectFetchMessageSettings(payload));
+
   const { messages } = yield call(fetchMessages, {
     ...params,
     lastReceived: '',

@@ -34,12 +34,13 @@ const {
   queueProcessingUploadsTask,
   presenceKeepAlive,
   joinDiscussionTask,
-  selectServerUrl,
   createInviteTask,
   createIssueTask,
   watchDiscussionSocket,
   openWebSocket,
 } = require('./discussions');
+
+const { selectServerUrl } = require('../selectors');
 
 const ISSUE_GUID = 'issue-guid';
 const RESPONSE_URL = 'http://response.url';

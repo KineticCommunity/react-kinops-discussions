@@ -20,7 +20,7 @@ const mapStateToProps = (state, props) => {
     props.discussionId && state.discussions.discussions.get(props.discussionId);
 
   return {
-    profile: state.app.profile,
+    profile: state.kinops.profile,
     discussion,
     messages: discussion ? discussion.messages : List(),
     hasMoreMessages: discussion && discussion.hasMoreMessages,

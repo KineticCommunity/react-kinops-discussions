@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Avatar from 'react-avatar';
 import moment from 'moment';
 
+import { selectServerUrl } from '../redux/selectors';
+
 const AVAILABLE_ICONS = [
   'avi',
   'excel',
@@ -120,7 +122,7 @@ export const MessagesGroup = ({ messages, profile, discussionServerUrl }) => (
 );
 
 const mapStateToProps = state => ({
-  discussionServerUrl: state.app.discussionServerUrl,
+  discussionServerUrl: selectServerUrl(state),
 });
 
 export const MessagesGroupContainer = compose(

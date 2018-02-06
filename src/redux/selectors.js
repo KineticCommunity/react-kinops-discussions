@@ -2,6 +2,9 @@ import { bundle } from 'react-kinetic-core';
 
 import { getAttributeValue, isMemberOf, getTeams, getRoles } from '../utils';
 
+export const selectServerUrl = state =>
+  state.kinops.space && `/${state.kinops.space.slug}/kinetic-response`;
+
 // Find a Kapp by Space Attribute Value
 const kappBySpaceAttribute = (state, slugAttributeName) =>
   !state.kinops.loading
