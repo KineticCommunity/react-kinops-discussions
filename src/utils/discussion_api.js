@@ -42,6 +42,34 @@ export const fetchIssue = (guid, responseUrl) =>
     .then(response => ({ issue: response.data }))
     .catch(response => ({ error: response }));
 
+export const fetchMyOpenIssues = (responseUrl, limit = 10, offset = 0) =>
+  axios
+    .get(`${responseUrl}/api/v1/issues/my_open_issues`, {
+      withCredentials: true,
+      params: { limit, offset },
+    })
+    .then(response => ({ issues: response.data }))
+    .catch(response => ({ error: response }));
+
+export const searchIssues = (responseUrl, search, limit = 10, offset = 0) =>
+  axios
+    .post(
+      `${responseUrl}/api/v1/issues/search`,
+      {
+        query: {
+          name_or_description_or_tags_name_cont: search,
+          limit,
+          offset,
+        },
+      },
+      { withCredentials: true },
+    )
+    .then(response => ({
+      issues: response.data.issues,
+      totalCount: response.data.total_count,
+    }))
+    .catch(response => ({ error: response }));
+
 export const createIssue = (issue, responseUrl) =>
   axios
     .post(`${responseUrl}/api/v1/issues`, issue, { withCredentials: true })
