@@ -3,6 +3,7 @@ import { compose, shouldUpdate } from 'recompose';
 import { connect } from 'react-redux';
 import Avatar from 'react-avatar';
 import moment from 'moment';
+import Markdown from 'react-markdown';
 
 import { selectServerUrl } from '../redux/selectors';
 
@@ -43,7 +44,11 @@ const getUploadImage = (message, discussionServerUrl) => {
   return `${discussionServerUrl}/assets/images/unknown_128.png`;
 };
 
-const UploadMessage = ({ message, messageOwner, discussionServerUrl }) => (
+export const UploadMessage = ({
+  message,
+  messageOwner,
+  discussionServerUrl,
+}) => (
   <div className={`message message-upload message-${messageOwner} img-fluid`}>
     <a
       className="upload-image"
@@ -71,10 +76,8 @@ const UploadMessage = ({ message, messageOwner, discussionServerUrl }) => (
   </div>
 );
 
-const TextMessage = ({ message }) => (
-  <div key={message.id} className="message">
-    {message.body}
-  </div>
+export const TextMessage = ({ message }) => (
+  <Markdown className="message" source={message.body} skipHtml />
 );
 
 export const MessagesGroup = ({ messages, profile, discussionServerUrl }) => (

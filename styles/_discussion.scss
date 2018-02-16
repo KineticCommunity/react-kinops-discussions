@@ -57,6 +57,15 @@
             bottom: auto;
             border: 4px solid;
           }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          p {
+            margin: 0;
+          }
         }
         .message-upload {
           display: flex;
