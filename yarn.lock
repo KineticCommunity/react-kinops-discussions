@@ -5811,8 +5811,8 @@ react-hot-loader@3.0.0-beta.6:
     source-map "^0.4.4"
 
 react-kinetic-core@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/react-kinetic-core/-/react-kinetic-core-0.3.1.tgz#6230f492188ad578cbbdf4455fe493b91d7491cd"
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/react-kinetic-core/-/react-kinetic-core-0.3.3.tgz#497f796149c62754c5d7e567c5b5a9df7a84f0c6"
   dependencies:
     axios "^0.16.1"
     deepequal "^0.0.1"
