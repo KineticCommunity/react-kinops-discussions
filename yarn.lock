@@ -5822,8 +5822,8 @@ react-kinetic-core@^0.3.1:
     redux "^3.6.0"
 
 react-kinops-common@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/react-kinops-common/-/react-kinops-common-0.3.3.tgz#6bacd28c2ffa568ff5395482f3199f1238ed8184"
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/react-kinops-common/-/react-kinops-common-0.3.6.tgz#5ee66e76013d379d2802892949de8ace3787ef3b"
   dependencies:
     deepequal "^0.0.1"
     eslint-config-react-app "^2.0.1"
