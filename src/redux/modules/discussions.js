@@ -44,6 +44,13 @@ export const types = {
   OPEN_MODAL: namespace('discussions', 'OPEN_MODAL'),
   CLOSE_MODAL: namespace('discussions', 'CLOSE_MODAL'),
   SET_INVITATION_FIELD: namespace('discussions', 'SET_INVITATION_FIELD'),
+
+  // Discussion Visibility
+  SET_DISCUSSION_VISIBILITY: namespace(
+    'discussions',
+    'SET_DISCUSSION_VISIBILITY',
+  ),
+  SET_PAGE_TITLE_INTERVAL: namespace('discussions', 'SET_PAGE_TITLE_INTERVAL'),
 };
 
 export const actions = {
@@ -96,6 +103,10 @@ export const actions = {
   openModal: withPayload(types.OPEN_MODAL, 'guid', 'modalType'),
   closeModal: withPayload(types.CLOSE_MODAL),
   setInvitationField: withPayload(types.SET_INVITATION_FIELD, 'field', 'value'),
+
+  // Discussion Visibility
+  setDiscussionVisibility: withPayload(types.SET_DISCUSSION_VISIBILITY),
+  setPageTitleInterval: withPayload(types.SET_PAGE_TITLE_INTERVAL),
 };
 
 export const Discussion = Record({
@@ -120,6 +131,8 @@ export const State = Record({
   currentOpenModals: List(),
   invitationFields: Map({}),
   invitationPending: false,
+  isVisible: true,
+  pageTitleInterval: null,
 });
 
 // Applies fn to each value in list, splitting it into a new list each time fn
@@ -295,6 +308,10 @@ export const reducer = (state = State(), { type, payload }) => {
       return state.setIn(['invitationFields', payload.field], payload.value);
     case layoutTypes.SET_SIZE:
       return state.delete('currentOpenModals');
+    case types.SET_DISCUSSION_VISIBILITY:
+      return state.set('isVisible', payload === 'visible' ? true : false);
+    case types.SET_PAGE_TITLE_INTERVAL:
+      return state.set('pageTitleInterval', payload);
     default:
       return state;
   }

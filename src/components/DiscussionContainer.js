@@ -43,6 +43,7 @@ const mapDispatchToProps = {
   closeModal: actions.closeModal,
   createInvite: actions.createInvite,
   createInviteDone: actions.createInviteDone,
+  toggleVisibility: actions.setDiscussionVisibility,
 };
 
 const closeCurrent = props => () => {

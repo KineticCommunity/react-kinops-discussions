@@ -9,6 +9,7 @@ import { ScrollHelper } from './ScrollHelper';
 import { ParticipantsHeaderContainer } from './ParticipantsHeader';
 import { ParticipantsDialogContainer } from './ParticipantsDialog';
 import { InvitationDialogContainer } from './InvitationDialog';
+import { VisibilityHelper } from './VisibilityHelper';
 
 const Messages = ({
   discussion,
@@ -124,6 +125,7 @@ export const Discussion = props => {
     isModal,
     isMobileModal,
     isSmallLayout,
+    toggleVisibility,
   } = props;
 
   if (discussion && isModal) {
@@ -144,7 +146,9 @@ export const Discussion = props => {
 
   return discussion ? (
     <div className="kinops-discussions">
-      <Messages {...props} />
+      <VisibilityHelper onChange={toggleVisibility}>
+        <Messages {...props} />
+      </VisibilityHelper>
       <ChatInputForm discussion={discussion} />
     </div>
   ) : null;

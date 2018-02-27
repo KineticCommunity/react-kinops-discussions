@@ -368,6 +368,39 @@ export function* queueProcessingUploadsTask({ payload }) {
   }
 }
 
+const toggleNewMessageTitle = () => {
+  const currentTitle = document.title;
+  currentTitle.includes('New Message...')
+    ? (document.title = currentTitle.split('New Message... | ')[1])
+    : (document.title = 'New Message... | ' + currentTitle);
+};
+
+export function* watchUnreadMessages(action) {
+  const isVisible = yield select(state => state.discussions.isVisible);
+  const pageTitleInterval = yield select(
+    state => state.discussions.pageTitleInterval,
+  );
+  if (!isVisible && pageTitleInterval === null) {
+    const newTimer = setInterval(toggleNewMessageTitle, 1000);
+    yield put(actions.setPageTitleInterval(newTimer));
+  }
+}
+
+export function* watchDiscussionVisibility(action) {
+  const isVisible = yield select(state => state.discussions.isVisible);
+  const pageTitleInterval = yield select(
+    state => state.discussions.pageTitleInterval,
+  );
+  const currentTitle = document.title;
+  if (isVisible && pageTitleInterval !== null) {
+    clearInterval(pageTitleInterval);
+    yield put(actions.setPageTitleInterval(null));
+    if (currentTitle.includes('New Message...')) {
+      toggleNewMessageTitle();
+    }
+  }
+}
+
 export function* watchDiscussion() {
   yield all([
     takeEvery(types.MESSAGE_TX, sendMessageTask),
@@ -380,5 +413,7 @@ export function* watchDiscussion() {
       queueProcessingUploadsTask,
     ),
     takeEvery(types.CONNECT, watchDiscussionSocket),
+    takeEvery(types.MESSAGE_RX, watchUnreadMessages),
+    takeEvery(types.SET_DISCUSSION_VISIBILITY, watchDiscussionVisibility),
   ]);
 }
