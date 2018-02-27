@@ -5768,7 +5768,7 @@ react-hot-loader@3.0.0-beta.6:
     redbox-react "^1.2.5"
     source-map "^0.4.4"
 
-react-kinetic-core@^0.3.1, react-kinetic-core@^0.3.3:
+react-kinetic-core@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/react-kinetic-core/-/react-kinetic-core-0.3.3.tgz#497f796149c62754c5d7e567c5b5a9df7a84f0c6"
   dependencies:
@@ -5779,9 +5779,9 @@ react-kinetic-core@^0.3.1, react-kinetic-core@^0.3.3:
     react-redux "^5.0.4"
     redux "^3.6.0"
 
-react-kinops-common@^0.3.3:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/react-kinops-common/-/react-kinops-common-0.3.7.tgz#eda1f44669fde68165e5a6403edcb2d0173b8067"
+react-kinops-common@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/react-kinops-common/-/react-kinops-common-0.3.8.tgz#f63da1dec0d715505865e10ab3e95b0bc54df4af"
   dependencies:
     deepequal "^0.0.1"
     eslint-config-react-app "^2.0.1"
@@ -5792,7 +5792,7 @@ react-kinops-common@^0.3.3:
     lodash.isplainobject "^4.0.6"
     lodash.isstring "^4.0.1"
     modularscale-sass "^3.0.4"
-    react-kinetic-core "^0.3.1"
+    react-kinetic-core "^0.3.3"
     react-svg-inline "^2.0.1"
     react-transition-group "^1.1.2"
     reactstrap "^4.8.0"
