@@ -125,7 +125,7 @@ export const Discussion = props => {
     isModal,
     isMobileModal,
     isSmallLayout,
-    toggleVisibility,
+    setDiscussionVisibility,
   } = props;
 
   if (discussion && isModal) {
@@ -146,7 +146,7 @@ export const Discussion = props => {
 
   return discussion ? (
     <div className="kinops-discussions">
-      <VisibilityHelper onChange={toggleVisibility}>
+      <VisibilityHelper onChange={setDiscussionVisibility}>
         <Messages {...props} />
       </VisibilityHelper>
       <ChatInputForm discussion={discussion} />

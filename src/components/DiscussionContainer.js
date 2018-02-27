@@ -29,6 +29,7 @@ const mapStateToProps = (state, props) => {
     invitationFields: state.discussions.invitationFields,
     invitationPending: state.discussions.invitationPending,
     isSmallLayout: state.layout.get('size') === 'small',
+    pageTitleInterval: state.discussions.pageTitleInterval,
   };
 };
 
@@ -43,7 +44,8 @@ const mapDispatchToProps = {
   closeModal: actions.closeModal,
   createInvite: actions.createInvite,
   createInviteDone: actions.createInviteDone,
-  toggleVisibility: actions.setDiscussionVisibility,
+  setDiscussionVisibility: actions.setDiscussionVisibility,
+  setPageTitleInterval: actions.setPageTitleInterval,
 };
 
 const closeCurrent = props => () => {
@@ -143,12 +145,17 @@ export const DiscussionContainer = compose(
       this.props.setFormattedMessages(formatMessages(this.props.messages));
       if (this.props.discussionId) {
         this.props.joinDiscussion(this.props.discussionId);
+        this.props.setDiscussionVisibility('visible');
       }
     },
     componentWillUnmount() {
       if (this.props.discussionId) {
         this.props.stopConnection(this.props.discussionId);
         this.props.leaveDiscussion(this.props.discussionId);
+      }
+      if (this.props.pageTitleInterval !== null) {
+        clearInterval(this.props.pageTitleInterval);
+        this.props.setPageTitleInterval(null);
       }
     },
     componentWillReceiveProps(nextProps) {
