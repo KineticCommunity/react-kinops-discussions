@@ -244,7 +244,9 @@ export const reducer = (state = State(), { type, payload }) => {
     case types.SET_INVITES:
       return state.setIn(
         ['discussions', payload.guid, 'invites'],
-        List(payload.invites),
+        List(payload.invites).filter(
+          invite => invite.status === 'Unassociated',
+        ),
       );
     case types.ADD_INVITE:
       return state.updateIn(['discussions', payload.guid, 'invites'], invites =>

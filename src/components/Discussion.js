@@ -150,6 +150,7 @@ export const Discussion = props => {
         <Messages {...props} />
       </VisibilityHelper>
       <ChatInputForm discussion={discussion} />
+      <DiscussionModal {...props} />
     </div>
   ) : null;
 };
