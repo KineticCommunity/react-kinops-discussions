@@ -65,6 +65,9 @@
           h5,
           p {
             margin: 0;
+            a{
+              overflow-wrap: break-word;
+            }
           }
         }
         .message-upload {
